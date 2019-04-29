@@ -30,3 +30,5 @@ Ansible playbooks for:
 ### Port forwarding:
 
 Nginx works on port 80 on the guest is forwarded to port 8080 on the host.
+
+#### Note: Still working on it.
