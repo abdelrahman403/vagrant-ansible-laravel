@@ -1,0 +1,24 @@
+---
+- name: Transfer the Composer Installation Script
+  template: src=composer-install.sh dest=/home/vagrant/
+
+- name: Execute the Composer Installation Script.
+  command: sh /home/vagrant/composer-install.sh
+
+- name: Remove composer-install.sh File
+  file:
+    path: /home/vagrant/composer-install.sh
+    state: absent
+
+# - name: Copy composer.phar into Environment Variable    # NOT WORKING
+#   copy:
+#     src: /home/vagrant/composer.phar
+#     dest: /usr/bin/composer
+#     remote_src: yes
+
+# reboot for make the changes done in selinux and firewalld
+- name: Reboot The Machine
+  command: /sbin/shutdown -r +1
+  async: 0
+  poll: 0
+  ignore_errors: true

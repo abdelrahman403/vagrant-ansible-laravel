@@ -1,0 +1,31 @@
+---
+  - name: Install EPEL Repository
+    yum: name=https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm state=present update_cache=yes
+
+  - name: Add the Remi CentOS repository.
+    command: rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+
+  - name: Install yum-utils.
+    yum: name=yum-utils state=installed update_cache=yes
+
+  - name: Update The System.
+    yum: name=* state=latest update_cache=yes
+
+  - name: Required Packages.
+    yum: name={{ item }} state=installed
+    with_items:
+      - nmap
+      - net-tools
+      - vim
+      - wget
+      - htop
+      - git
+      - zip
+      - unzip
+    
+  - name: Disable Selinux
+    selinux: state=disabled
+
+  - name: Stop Firewall
+    service: name=firewalld state=stopped enabled=no
+

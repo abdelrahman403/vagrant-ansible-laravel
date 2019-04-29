@@ -1,0 +1,27 @@
+---
+  - name: Install Deps..
+    yum: name={{ item }} state=present
+    with_items:
+      - php71w
+      - php71w-opcache
+      - php71w-mcrypt
+      - php71w-curl
+      - php71w-pdo
+      - php71w-cli
+      - php71w-mysqlnd
+      - php71w-gd
+      - php71w-xsl
+      - php71w-json
+      - php71w-intl 
+      - php71w-pear
+      - php71w-devel
+      - php71w-mbstring
+      - php71w-zip
+      - php71w-soap
+
+  - name: Create a New Directory For Session Path
+    file: path=/var/lib/php/session/ state=directory owner=apache group=apache mode=0777
+
+  - name: Install PHPMyAdmin By Unarchive a File In a Remote Machine
+    unarchive: src=../templates/phpmyadmin.tar.gz dest=/var/www/html
+

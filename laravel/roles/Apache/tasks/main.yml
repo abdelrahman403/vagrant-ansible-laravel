@@ -1,0 +1,9 @@
+---
+  - name: Install Apache Server.
+    yum: name=httpd state=installed
+
+  - name: Start and Enable Apache Server.
+    service: name=httpd state=started enabled=yes
+
+  - name: Test PHP
+    template: src=info.php dest={{ rootdir }} 

@@ -1,0 +1,14 @@
+---
+- name: Install Apache, MariaDB, PHP, PHPMyAdmin, Composer.
+  hosts: all
+  user: vagrant
+  become: yes
+  vars:
+    ansible_become_pass: vagrant
+  roles:
+    - Repos
+    - System
+    - Apache
+    - MariaDB
+    - PHP
+    - Composer

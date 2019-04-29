@@ -1,0 +1,9 @@
+# Apache Settings
+rootdir: /var/www/html
+
+# MySQL Settings
+mysqlservice: mysqld
+mysql_port: 3306
+db_host: localhost
+mysql_root_username: root
+mysql_root_password: wpRootPass
